@@ -3,9 +3,9 @@ Repositório para o primeiro trabalho da disciplina de __IF673__ - Lógica para 
 
 __INTRUÇÕES PARA RODAR:__
 
-1 - Coloque o arquivo __*".in"*__ no sub-diretório Examples
+1 - Coloque o arquivo *.in* no sub-diretório Examples
 
-2 - Retorne para o diretório anterior __*"./logica_trabalho1"*__
+2 - Vá para para o diretório principal *./logica_trabalho1*
 
 3 - Rode o main.js no node com __*"node solve.js"*__
 
