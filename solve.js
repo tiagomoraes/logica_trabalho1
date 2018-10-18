@@ -1,6 +1,7 @@
 // MAIN CODE
 
 let readline = require('readline-sync'); //imports the read file module
+let fs = require("fs"); // the module to read and write files
 
 let fileName = readline.question("\nDigite o sub-diretorio do arquivo:\n");
 
@@ -9,6 +10,8 @@ let formula = readFormula(input);
 
 let arrExp = formula.expressions;
 let arrValues = formula.values;
+
+let outputText = '';
 
 for(let i = 0; i < arrExp.length; i++) {
   let isValidSet = true;
@@ -19,46 +22,100 @@ for(let i = 0; i < arrExp.length; i++) {
   }
 
   console.log('Problema #' + (i+1));
+  outputText += 'Problema #' + (i+1) + '\n';
 
-  if(isValidSet) {
-    let exp;
-    if(arrExp[i].length > 1) {
-      exp = joinSet(arrExp[i]);
-    } else {
-      exp = arrExp[i][0];
-    }
-    let map = mapVariables(exp, arrValues[i]);
-
-    let result = false;
-    let resultUnformated = solve(exp, map);
-    if(resultUnformated == false) {
-      result = false;
-    } else {
-      result = true;
-    }
-
-    if(result) {
-      if(input[i].charAt(0) === '{') {
-        console.log('A valoracao-verdade satisfaz o conjunto.\n');
+  if(i == arrExp.length - 1) {
+    if(isValidSet) {
+      let exp;
+      if(arrExp[i].length > 1) {
+        exp = joinSet(arrExp[i]);
       } else {
-        console.log('A valoracao-verdade satisfaz a proposicao.\n');
+        exp = arrExp[i][0];
+      }
+      let map = mapVariables(exp, arrValues[i]);
+  
+      let result = false;
+      let resultUnformated = solve(exp, map);
+      if(resultUnformated == false) {
+        result = false;
+      } else {
+        result = true;
+      }
+  
+      if(result) {
+        if(input[i].charAt(0) === '{') {
+          console.log('A valoracao-verdade satisfaz o conjunto.\n');
+          outputText += 'A valoracao-verdade satisfaz o conjunto.\n';
+        } else {
+          console.log('A valoracao-verdade satisfaz a proposicao.\n');
+          outputText += 'A valoracao-verdade satisfaz a proposicao.\n';
+        }
+      } else {
+        if(input[i].charAt(0) === '{') {
+          console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
+          outputText += 'A valoracao-verdade nao satisfaz o conjunto.\n';
+        } else {
+          console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
+          outputText += 'A valoracao-verdade nao satisfaz a proposicao.\n';
+        }
       }
     } else {
       if(input[i].charAt(0) === '{') {
-        console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
+        console.log('Ha uma palavra nao legitima no conjunto.\n');
+        outputText += 'Ha uma palavra nao legitima no conjunto.\n';      
       } else {
-        console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
+        console.log('A palavra nao e legitima.\n');
+        outputText += 'A palavra nao e legitima.\n';       
       }
     }
   } else {
-    if(input[i].charAt(0) === '{') {
-      console.log('Ha uma palavra nao legitima no conjunto.\n');
+    if(isValidSet) {
+      let exp;
+      if(arrExp[i].length > 1) {
+        exp = joinSet(arrExp[i]);
+      } else {
+        exp = arrExp[i][0];
+      }
+      let map = mapVariables(exp, arrValues[i]);
+  
+      let result = false;
+      let resultUnformated = solve(exp, map);
+      if(resultUnformated == false) {
+        result = false;
+      } else {
+        result = true;
+      }
+  
+      if(result) {
+        if(input[i].charAt(0) === '{') {
+          console.log('A valoracao-verdade satisfaz o conjunto.\n');
+          outputText += 'A valoracao-verdade satisfaz o conjunto.\n\n';
+        } else {
+          console.log('A valoracao-verdade satisfaz a proposicao.\n');
+          outputText += 'A valoracao-verdade satisfaz a proposicao.\n\n';
+        }
+      } else {
+        if(input[i].charAt(0) === '{') {
+          console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
+          outputText += 'A valoracao-verdade nao satisfaz o conjunto.\n\n';
+        } else {
+          console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
+          outputText += 'A valoracao-verdade nao satisfaz a proposicao.\n\n';
+        }
+      }
     } else {
-      console.log('A palavra nao e legitima.\n');
+      if(input[i].charAt(0) === '{') {
+        console.log('Ha uma palavra nao legitima no conjunto.\n');
+        outputText += 'Ha uma palavra nao legitima no conjunto.\n\n';      
+      } else {
+        console.log('A palavra nao e legitima.\n');
+        outputText += 'A palavra nao e legitima.\n\n';       
+      }
     }
   }
-
 }
+
+fs.writeFileSync('saida.out', outputText);
 
 // gets the input file name and returns an array with all the text lines on it
 function readInput(fileName) {
