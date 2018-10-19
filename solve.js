@@ -3,9 +3,7 @@
 let readline = require('readline-sync'); //imports the read file module
 let fs = require("fs"); // the module to read and write files
 
-let fileName = readline.question("\nDigite o sub-diretorio do arquivo:\n");
-
-let input = readInput(fileName);
+let input = readInput('Entrada.in');
 let formula = readFormula(input);
 
 let arrExp = formula.expressions;
@@ -21,7 +19,7 @@ for(let i = 0; i < arrExp.length; i++) {
     }
   }
 
-  console.log('Problema #' + (i+1));
+  //console.log('Problema #' + (i+1));
   outputText += 'Problema #' + (i+1) + '\n';
 
   if(i == arrExp.length - 1) {
@@ -44,7 +42,7 @@ for(let i = 0; i < arrExp.length; i++) {
   
       if(result) {
         if(input[i].charAt(0) === '{') {
-          console.log('A valoracao-verdade satisfaz o conjunto.\n');
+          //console.log('A valoracao-verdade satisfaz o conjunto.\n');
           outputText += 'A valoracao-verdade satisfaz o conjunto.\n';
         } else {
           console.log('A valoracao-verdade satisfaz a proposicao.\n');
@@ -52,19 +50,19 @@ for(let i = 0; i < arrExp.length; i++) {
         }
       } else {
         if(input[i].charAt(0) === '{') {
-          console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
+          //console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
           outputText += 'A valoracao-verdade nao satisfaz o conjunto.\n';
         } else {
-          console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
+          //console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
           outputText += 'A valoracao-verdade nao satisfaz a proposicao.\n';
         }
       }
     } else {
       if(input[i].charAt(0) === '{') {
-        console.log('Ha uma palavra nao legitima no conjunto.\n');
+        //console.log('Ha uma palavra nao legitima no conjunto.\n');
         outputText += 'Ha uma palavra nao legitima no conjunto.\n';      
       } else {
-        console.log('A palavra nao e legitima.\n');
+        //console.log('A palavra nao e legitima.\n');
         outputText += 'A palavra nao e legitima.\n';       
       }
     }
@@ -88,39 +86,40 @@ for(let i = 0; i < arrExp.length; i++) {
   
       if(result) {
         if(input[i].charAt(0) === '{') {
-          console.log('A valoracao-verdade satisfaz o conjunto.\n');
+          //console.log('A valoracao-verdade satisfaz o conjunto.\n');
           outputText += 'A valoracao-verdade satisfaz o conjunto.\n\n';
         } else {
-          console.log('A valoracao-verdade satisfaz a proposicao.\n');
+          //console.log('A valoracao-verdade satisfaz a proposicao.\n');
           outputText += 'A valoracao-verdade satisfaz a proposicao.\n\n';
         }
       } else {
         if(input[i].charAt(0) === '{') {
-          console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
+          //console.log('A valoracao-verdade nao satisfaz o conjunto.\n');
           outputText += 'A valoracao-verdade nao satisfaz o conjunto.\n\n';
         } else {
-          console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
+          //console.log('A valoracao-verdade nao satisfaz a proposicao.\n');
           outputText += 'A valoracao-verdade nao satisfaz a proposicao.\n\n';
         }
       }
     } else {
       if(input[i].charAt(0) === '{') {
-        console.log('Ha uma palavra nao legitima no conjunto.\n');
+        //console.log('Ha uma palavra nao legitima no conjunto.\n');
         outputText += 'Ha uma palavra nao legitima no conjunto.\n\n';      
       } else {
-        console.log('A palavra nao e legitima.\n');
+        //console.log('A palavra nao e legitima.\n');
         outputText += 'A palavra nao e legitima.\n\n';       
       }
     }
   }
 }
 
-fs.writeFileSync('saida.out', outputText);
+fs.writeFileSync('Saída.out', outputText);
+console.log('\nDone!\n');
 
 // gets the input file name and returns an array with all the text lines on it
 function readInput(fileName) {
   let fs = require("fs"); // the module to read and write files
-  let text  = fs.readFileSync('./Examples/' + fileName, "utf8").split('\n'); //  an array containing lines of text extracted from the file.
+  let text  = fs.readFileSync(fileName, "utf8").split('\n'); //  an array containing lines of text extracted from the file.
   text.shift(); // removes the first element of array
   text = text.slice(0, -1);
   return text;

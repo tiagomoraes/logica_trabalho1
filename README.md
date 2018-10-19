@@ -3,16 +3,12 @@ Repositório para o primeiro trabalho da disciplina de __IF673__ - Lógica para 
 
 __INTRUÇÕES PARA RODAR:__
 
-1 - Coloque o arquivo *.in* no sub-diretório Examples
+1 - Coloque o arquivo *Entrada.in* no diretório do projeto.
 
-2 - Vá para para o diretório principal *./logica_trabalho1*
+2 - Rode o solve.js no node com __*"node solve.js"*__
 
-3 - Rode o main.js no node com __*"node solve.js"*__
+3 - O arquivo *Saída.out* estará no mesmo diretório que o *"solve.js"*
 
-4 - Selecione o arquivo *.in* a ser rodado, digitando seu sub-diretório e seu nome.
+4 - Para checar a saída, basta rodar __*"diff Saída.out arquivoSaídaEsperada.out"*__ (somente Ubuntu e MacOS)
 
-5 - Para gerar um arquivo *.out*, basta rodar __*"node solve.js > output.out"*__
-
-6 - O arquivo *output.out* estará no mesmo diretório que o __*"solve.js"*__
-
-7 - Para checar a saída, basta rodar __*"diff output.out arquivoSaídaEsperada.out"*__ (somente Ubuntu e MacOS)
+obs.: *"arquivoSaídaEsperada.out"* é o nome do arquivo *.out* que possui a saída esperada.
