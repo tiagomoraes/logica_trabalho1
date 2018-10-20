@@ -1,6 +1,10 @@
 # logica_trabalho1
 Repositório para o primeiro trabalho da disciplina de __IF673__ - Lógica para Computação (2018.2).
 
+__RODAR PELA PRIMEIRA VEZ:__
+
+1 - É preciso instalar o NodeJs através de https://nodejs.org/
+
 __INTRUÇÕES PARA RODAR:__
 
 1 - Coloque o arquivo *Entrada.in* no diretório do projeto.
